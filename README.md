@@ -1,2 +1,18 @@
 # CITE
-Official implementation for paper "Contrastive Individual Treatment Effects Estimation" 
+
+## note
+This is the official implementation for paper ["Contrastive Individual Treatment Effects Estimation" ]()  
+
+The code is built on the [CounterFactual Regression (CFR)](https://arxiv.org/abs/1606.03976) for fair comparison.  
+
+## cite
+
+Please consider citing this paper if it is helpful for you.
+
+
+
+
+
+
+
+
