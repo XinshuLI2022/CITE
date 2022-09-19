@@ -7,7 +7,7 @@ The code is built on the [CounterFactual Regression (CFR)](https://arxiv.org/abs
 
 ## environments
 
-Same with [CounterFactual Regression (CFR)](https://arxiv.org/abs/1606.03976) for fair comparison.  
+Same with [CounterFactual Regression (CFR)](https://arxiv.org/abs/1606.03976).  
 
 ## usage
 
