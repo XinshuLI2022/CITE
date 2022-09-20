@@ -13,7 +13,6 @@ def load_config(cfg_file):
                 vs = l.split('=')
                 if len(vs)>0:
                     k,v = (vs[0], eval(vs[1]))
-                    #isinstance() function justify if object is a known type,eg,whether v is a list
                     if not isinstance(v,list):
                         v = [v]
                     cfg[k] = v
