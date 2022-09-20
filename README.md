@@ -3,7 +3,7 @@
 ## Introduction
 This is the official implementation for paper ["Contrastive Individual Treatment Effects Estimation" ]()  
 
-The code is built on the [CounterFactual Regression (CFR)](https://arxiv.org/abs/1606.03976) for fair comparison.  
+The code is built on the [CFR](https://arxiv.org/abs/1606.03976), [ABCEI](https://arxiv.org/abs/1904.13335), [SITE](https://proceedings.neurips.cc/paper/2018/hash/a50abba8132a77191791390c3eb19fe7-Abstract.html) for fair comparison.  
 
 ## Environments
 
