@@ -12,7 +12,6 @@ def validation_split(D_exp, val_fraction):
     if val_fraction > 0:
         n_valid = int(val_fraction*n)
         n_train = n-n_valid
-        ##upset the list index
         I = np.random.permutation(range(0,n))
         I_train = I[:n_train]
         I_valid = I[n_train:]
@@ -20,7 +19,7 @@ def validation_split(D_exp, val_fraction):
         I_train = range(n)
         I_valid = []
 
-    ## they are lists with upset index
+
     return I_train, I_valid
 
 def log(logfile,str):
