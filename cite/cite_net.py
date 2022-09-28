@@ -24,7 +24,7 @@ class cite_net(object):
         basename = name
         i = 0
         while name in self.variables:
-            name = '%s_%d' % (basename, i) #@TODO: not consistent with TF internally if changed
+            name = '%s_%d' % (basename, i) 
             i += 1
 
         self.variables[name] = var
