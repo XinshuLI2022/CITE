@@ -16,11 +16,6 @@ def policy_range(n, res=10):
     if not n_range[-1] == n:
         n_range.append(n)
 
-    # To make sure every curve is same length. Incurs a small error if res high.
-    # Only occurs if number of units considered differs.
-    # For example if resampling validation sets (with different number of
-    # units in the randomized sub-population)
-
     while len(n_range) > res:
         k = np.random.randint(len(n_range)-2)+1
         del n_range[k]
@@ -149,7 +144,7 @@ def evaluate_bin_att(predictions, data, i_exp, I_subset=None,
     if np.any(np.isnan(yf_p)) or np.any(np.isnan(ycf_p)):
         raise NaNException('NaN encountered')
 
-    # IMPORTANT: NOT USING BINARIZATION FOR EFFECT, ONLY FOR CLASSIFICATION!
+  
 
     eff_pred = ycf_p - yf_p;
     eff_pred[t > 0] = -eff_pred[t > 0];
@@ -226,8 +221,7 @@ def evaluate_cont_ate(predictions, data, i_exp, I_subset=None,
 
     pehe_appr = pehe_nn(yf_p, ycf_p, yf, x, t, nn_t, nn_c)
 
-    # @TODO: Not clear what this is for continuous data
-    #policy_value, policy_curve = policy_val(t, yf, eff_pred, compute_policy_curve)
+    
 
     return {'ate_pred': ate_pred, 'att_pred': att_pred,
             'atc_pred': atc_pred, 'bias_ate': bias_ate,
@@ -246,11 +240,10 @@ def evaluate_result(result, data, validation=False,
 
     n_units, _, n_rep, n_outputs = predictions.shape
 
-    #@TODO: Should depend on parameter
     compute_policy_curve = True
 
     eval_results = []
-    #Loop over output_times
+ 
     for i_out in range(n_outputs):
         eval_results_out = []
 
@@ -258,7 +251,7 @@ def evaluate_result(result, data, validation=False,
             nn_t, nn_c = cf_nn(data['x'][:,:,0], data['t'][:,0])
 
 
-        #Loop over repeated experiments
+     
         for i_rep in range(n_rep):
 
             if validation:
@@ -289,7 +282,7 @@ def evaluate_result(result, data, validation=False,
 
         eval_results.append(eval_results_out)
 
-    # Reformat into dict
+  
     eval_dict = {}
     keys = eval_results[0][0].keys()
     for k in keys:
@@ -297,48 +290,44 @@ def evaluate_result(result, data, validation=False,
         v = np.array([[eval_results[i][j][k] for i in range(n_outputs)] for j in range(n_rep)])
         eval_dict[k] = v
 
-    # Gather loss
-    # Shape [times, types, reps]
-    # Types: obj_loss, f_error, cf_error, cl_err, valid_obj,valid_f_error, valid_cl
+   
     if 'loss' in result.keys() and result['loss'].shape[1]>=6:
         losses = result['loss']
         n_loss_outputs = losses.shape[0]
-        #choose loss suits preds shape, 0,2,4...
+       
         if validation:
             objective = np.array([losses[(n_loss_outputs*i)//n_outputs,4,:] for i in range(n_outputs)]).T
         else:
             objective = np.array([losses[(n_loss_outputs*i)//n_outputs,0,:] for i in range(n_outputs)]).T
 
         eval_dict['objective'] = objective
-        # print(objective.shape)
-        # exit()
-
+  
     return eval_dict
 
 def evaluate(output_dir, data_path_train, data_path_test=None, binary=False):
 
     print ('\nEvaluating experiment %s...' % output_dir)
 
-    # Load results for all configurations
+    
     results = load_results(output_dir)
 
     if len(results) == 0:
         raise Exception('No finished results found.')
 
-    # Separate configuration files
+
     configs = [r['config'] for r in results]
 
-    # Test whether multiple experiments (different data)
+  
     multiple_exps = (configs[0]['experiments'] > 1)
     if Log.VERBOSE and multiple_exps:
         print ('Multiple data (experiments) detected')
 
-    # Load training data
+   
     if Log.VERBOSE:
         print ('Loading TRAINING data %s...' % data_path_train)
     data_train = load_data(data_path_train)
 
-    # Load test data
+   
     if data_path_test is not None:
         if Log.VERBOSE:
             print ('Loading TEST data %s...' % data_path_test)
@@ -348,7 +337,7 @@ def evaluate(output_dir, data_path_train, data_path_test=None, binary=False):
 
 
 
-    # Evaluate all results
+  
     eval_results = []
     configs_out = []
     i = 0
@@ -379,7 +368,7 @@ def evaluate(output_dir, data_path_train, data_path_test=None, binary=False):
 
         i += 1
 
-    # Reformat into dict
+  
     eval_dict = {'train': {}, 'test': {}, 'valid': {}}
     keys = eval_results[0]['train'].keys()
     for k in keys:
