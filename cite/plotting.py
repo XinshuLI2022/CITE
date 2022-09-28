@@ -118,8 +118,7 @@ def select_parameters(results, configs, stop_set, stop_criterion, choice_set, ch
             stop_criterion = 'rmse_fact'
 
     ''' Select early stopping for each repetition '''
-    ##results[stop_set][stop_criterion].shape[4,10,11]
-    # i_sel choose index of the min loss in all output11 [4,10]
+   
     n_exp = results[stop_set][stop_criterion].shape[1]
     i_sel = np.argmin(results[stop_set][stop_criterion],2)
     results_sel = {'train': {}, 'valid': {}, 'test': {}}
@@ -140,7 +139,7 @@ def select_parameters(results, configs, stop_set, stop_criterion, choice_set, ch
     print ('Early stopping:')
 
     ''' Select configuration '''
-    ##from dict to list
+   
     results_all = [dict([(k1, dict([(k2, v[i,]) for k2,v in results_sel[k1].items()]))
                         for k1 in results_sel.keys()]) for i in range(len(configs))]
 
@@ -353,7 +352,7 @@ def plot_cfr_evaluation_bin(results, configs, output_dir):
     results_sel = {'train': {}, 'valid': {}, 'test': {}}
 
     for k in results['valid'].keys():
-        # To reduce dimension
+      
         results_sel['train'][k] = np.sum(results['train'][k],2)
         results_sel['valid'][k] = np.sum(results['valid'][k],2)
         results_sel['test'][k] = np.sum(results['test'][k],2)
@@ -510,7 +509,7 @@ def plot_cfr_evaluation_cont(results, configs, output_dir):
     results_sel = {'train': {}, 'valid': {}, 'test': {}}
 
     for k in results['valid'].keys():
-        # To reduce dimension
+  
         results_sel['train'][k] = np.sum(results['train'][k],2)
         results_sel['valid'][k] = np.sum(results['valid'][k],2)
         results_sel['test'][k] = np.sum(results['test'][k],2)
