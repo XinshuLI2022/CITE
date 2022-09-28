@@ -228,7 +228,7 @@ def evaluate_cont_ate(predictions, data, i_exp, I_subset=None,
             'bias_att': bias_att, 'bias_atc': bias_atc,
             'rmse_fact': rmse_fact, 'rmse_cfact': rmse_cfact,
             'pehe': pehe, 'rmse_ite': rmse_ite, 'pehe_nn': pehe_appr}
-            #'policy_value': policy_value, 'policy_curve': policy_curve}
+          
 
 def evaluate_result(result, data, validation=False,
         multiple_exps=False, binary=False):
