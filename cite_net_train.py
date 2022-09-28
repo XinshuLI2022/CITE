@@ -71,7 +71,7 @@ def train(CITE, sess, train_step, D, I_valid, D_test, logfile, i_exp,score_file)
     I = range(n); I_train = list(set(I)-set(I_valid))
     n_train = len(I_train)
     
-    # '''Generate positive and negative samples'''
+    '''Generate positive and negative samples'''
     
     p_score_train = load_propensity_score(score_file,D['x'][I_train,:])
     pos_train = x_positive(D['x'][I_train,:],p_score_train,FLAGS.batch_size)   
@@ -82,7 +82,6 @@ def train(CITE, sess, train_step, D, I_valid, D_test, logfile, i_exp,score_file)
     neg_valid = x_negative(D['x'][I_valid,:],p_score_valid,FLAGS.batch_size//4)
 
     ''' Compute treatment probability'''
-    ##a single value (not constant), D['t'][I_train,:].shape=(471,1),it is take index of I_train of D['t']
     p_treated = np.mean(D['t'][I_train,:])
 
     ''' Set up loss feed_dicts'''
@@ -134,7 +133,7 @@ def train(CITE, sess, train_step, D, I_valid, D_test, logfile, i_exp,score_file)
 
         ''' Fetch sample '''
         I = random.sample(range(0, n_train), FLAGS.batch_size)
-        ##get batch_size unit
+    
         x_batch = D['x'][I_train,:][I,:]
         t_batch = D['t'][I_train,:][I]
         y_batch = D['yf'][I_train,:][I]
@@ -396,7 +395,7 @@ def run(outdir):
         all_losses.append(losses)
 
         ''' Fix shape for output (n_units, dim, n_reps, n_outputs) '''
-        ##swap tha axies(x,y) of a 
+     
         out_preds_train = np.swapaxes(np.swapaxes(all_preds_train,1,3),0,2)
         if  has_test:
             out_preds_test = np.swapaxes(np.swapaxes(all_preds_test,1,3),0,2)
