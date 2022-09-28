@@ -3,7 +3,7 @@ import os
 import numpy as np
 from subprocess import call
 
-#make every item to a list
+
 def load_config(cfg_file):
     cfg = {}
     with open(cfg_file,'r') as f:
@@ -17,7 +17,7 @@ def load_config(cfg_file):
                         v = [v]
                     cfg[k] = v
     return cfg
-#sample config values
+
 def sample_config(configs):
     cfg_sample = {}
     for k in configs.keys():
@@ -25,17 +25,17 @@ def sample_config(configs):
         c = np.random.choice(len(opts),1)[0]
         cfg_sample[k] = opts[c]
     return cfg_sample
-#turn the config variables to string
+
 def cfg_string(cfg):
     ks = sorted(cfg.keys())
     cfg_str = ','.join(['%s:%s' % (k, str(cfg[k])) for k in ks])
     return cfg_str.lower()
-#judge if the cfg value has been used
+
 def is_used_cfg(cfg, used_cfg_file):
     cfg_str = cfg_string(cfg)
     used_cfgs = read_used_cfgs(used_cfg_file)
     return cfg_str in used_cfgs
-#for the need of is_used_cfg, put the config into the set for scanning 
+
 def read_used_cfgs(used_cfg_file):
     used_cfgs = set()
     with open(used_cfg_file, 'r') as f:
@@ -43,7 +43,7 @@ def read_used_cfgs(used_cfg_file):
             used_cfgs.add(l.strip())
 
     return used_cfgs
-#save the used cfg into the used_cfg_file
+
 def save_used_cfg(cfg, used_cfg_file):
     with open(used_cfg_file, 'a') as f:
         cfg_str = cfg_string(cfg)
@@ -54,7 +54,7 @@ def run(cfg_file, num_runs):
 
     outdir = configs['outdir'][0]
     used_cfg_file = '%s/used_configs.txt' % outdir
-    #judge whether used_cfg_file is a file?
+    
     if not os.path.isfile(used_cfg_file):
         f = open(used_cfg_file, 'w')
         f.close()
