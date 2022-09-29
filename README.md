@@ -7,7 +7,7 @@ The code is built on the [CFR](https://arxiv.org/abs/1606.03976), [ABCEI](https:
 
 ## Environments
 
-Same with the implementation of [CounterFactual Regression (CFR)](https://github.com/clinicalml/cfrnet).  
+Same with [the implementation of CounterFactual Regression (CFR)](https://github.com/clinicalml/cfrnet).  
 
 ## Usage
 
