@@ -1,7 +1,7 @@
 # CITE
 
 ## Introduction
-This is the official implementation for paper ["Contrastive Individual Treatment Effects Estimation" ]()  
+This is the official implementation for paper ["Contrastive Individual Treatment Effects Estimation" ](https://ieeexplore.ieee.org/abstract/document/10027640)  
 
 The code is built on the [CFR](https://arxiv.org/abs/1606.03976), [ABCEI](https://arxiv.org/abs/1904.13335), [SITE](https://proceedings.neurips.cc/paper/2018/hash/a50abba8132a77191791390c3eb19fe7-Abstract.html) for fair comparison.  
 
