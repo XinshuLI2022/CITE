@@ -21,25 +21,13 @@ Same with [the implementation of CounterFactual Regression (CFR)](https://github
 Please consider citing this paper if it is helpful for you.
 
 ```sh
-@inproceedings{DBLP:conf/icdm/Li022,
-  author    = {Xinshu Li and
-               Lina Yao},
-  editor    = {Xingquan Zhu and
-               Sanjay Ranka and
-               My T. Thai and
-               Takashi Washio and
-               Xindong Wu},
-  title     = {Contrastive Individual Treatment Effects Estimation},
-  booktitle = {{IEEE} International Conference on Data Mining, {ICDM} 2022, Orlando,
-               FL, USA, November 28 - Dec. 1, 2022},
-  pages     = {1053--1058},
-  publisher = {{IEEE}},
-  year      = {2022},
-  url       = {https://doi.org/10.1109/ICDM54844.2022.00130},
-  doi       = {10.1109/ICDM54844.2022.00130},
-  timestamp = {Thu, 02 Feb 2023 14:29:00 +0100},
-  biburl    = {https://dblp.org/rec/conf/icdm/Li022.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
+@inproceedings{li2022contrastive,
+  title={Contrastive Individual Treatment Effects Estimation},
+  author={Li, Xinshu and Yao, Lina},
+  booktitle={2022 IEEE International Conference on Data Mining (ICDM)},
+  pages={1053--1058},
+  year={2022},
+  organization={IEEE}
 }
 ```
 
