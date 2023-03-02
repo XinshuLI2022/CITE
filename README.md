@@ -20,6 +20,7 @@ Same with [the implementation of CounterFactual Regression (CFR)](https://github
 
 Please consider citing this paper if it is helpful for you.
 
+'''sh
 @inproceedings{DBLP:conf/icdm/Li022,
   author    = {Xinshu Li and
                Lina Yao},
@@ -40,7 +41,7 @@ Please consider citing this paper if it is helpful for you.
   biburl    = {https://dblp.org/rec/conf/icdm/Li022.bib},
   bibsource = {dblp computer science bibliography, https://dblp.org}
 }
-
+'''
 
 
 
